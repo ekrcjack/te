@@ -23,7 +23,7 @@
   .tb.alt{background:#fff;color:#6b4c9a;border:1.5px solid #d7c8ea}
   .rate{font-size:.83rem;color:#7a6a90;display:flex;align-items:center;gap:5px}
   #q{width:100%;max-width:420px;margin:14px auto 0;display:block;padding:10px 14px;
-    border:1.5px solid #ddd0f0;border-radius:999px;font-size.95rem;font-size:.95rem;outline:none}
+    border:1.5px solid #ddd0f0;border-radius:999px;font-size:.95rem;outline:none}
   #q:focus{border-color:#6b4c9a}
   .filters{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:12px}
   .f{background:#f6f1fc;border:1.5px solid #e4d8f5;color:#6b4c9a;border-radius:999px;
@@ -37,6 +37,7 @@
   .rule{background:#faf7fd;border-radius:10px;padding:11px 13px;margin:11px 0 16px;
     font-size:.93rem;color:#4b3f5c}
   .g3{--c:#c8892f} .g2{--c:#2e9b57} .g1{--c:#2b7bd4} .gx{--c:#d98324} .gq{--c:#8a5cc4}
+  .ga{--c:#c2408a} .gn{--c:#0f8f9e}
   .grp{font-size:.95rem;font-weight:700;color:var(--c);margin:18px 0 9px;
     padding-left:9px;border-left:4px solid var(--c)}
 
@@ -107,7 +108,7 @@
 
 <header>
   <h1>て形の変化規則</h1>
-  <div class="sub">三類・二類・一類 完全對照 ｜ 例句 ＋ 發音</div>
+  <div class="sub">動詞（三類・二類・一類）＋ 形容詞・名詞 完全對照 ｜ 例句 ＋ 發音</div>
   <div class="stat" id="stat"></div>
   <div class="toolbar">
     <button class="tb" onclick="playAll()">▶ 連續朗讀（目前顯示）</button>
@@ -118,7 +119,7 @@
       <span id="rateVal">0.85</span>
     </label>
   </div>
-  <input id="q" placeholder="🔍 搜尋：漢字／假名／中文（例：のむ、喝、書）">
+  <input id="q" placeholder="🔍 搜尋：漢字／假名／中文（例：のむ、喝、高い、学生）">
   <div class="filters" id="filters"></div>
 </header>
 
@@ -145,7 +146,29 @@
   <div class="rule">① 行く 完全不規則　② 下列動詞外型像二類，其實是一類 ― N5 最常錯的地方。</div>
 </section>
 
-<section class="gq"><h2>練習問題 <span class="cnt">20 題</span></h2>
+<section class="ga" id="sa"><h2>形容詞のて形 <span class="cnt" id="ca"></span></h2>
+  <div class="rule"><b>い形容詞</b>：去<b>い</b>＋<b>くて</b>（高い→高くて）。<b>な形容詞</b>：語幹＋<b>で</b>（静か→静かで）。<br>
+    兩者的て形都用來 ①<b>並列</b>「又…又…」　②<b>原因</b>「因為…所以…」。</div>
+  <div class="memo">
+    <div><b>い形容詞</b> → ～くて<br><span style="font-size:.8rem;color:#7a6a90">安い→安くて</span></div>
+    <div><b>いい／よい</b> → よくて<br><span style="font-size:.8rem;color:#7a6a90">特例，非「いくて」</span></div>
+    <div><b>ない</b> → なくて<br><span style="font-size:.8rem;color:#7a6a90">ない 本身是い形容詞</span></div>
+    <div><b>な形容詞</b> → ～で<br><span style="font-size:.8rem;color:#7a6a90">便利→便利で</span></div>
+    <div><b>否定</b> → ～くなくて／～じゃなくて<br><span style="font-size:.8rem;color:#7a6a90">高くなくて・静かじゃなくて</span></div>
+  </div>
+</section>
+
+<section class="gn" id="sn"><h2>名詞のて形（名詞＋で）<span class="cnt" id="cn"></span></h2>
+  <div class="rule">名詞後面直接加 <b>で</b>（学生→学生で）。這個 <b>で</b> 來自斷定助動詞 <b>だ</b> 的て形，
+    所以和<b>な形容詞完全同型</b>。用法 ①<b>並列說明</b>「是A，而且…」　②<b>原因</b>「因為A所以…」。</div>
+  <div class="memo">
+    <div><b>名詞</b> → ～で<br><span style="font-size:.8rem;color:#7a6a90">学生→学生で</span></div>
+    <div><b>な形容詞</b> → ～で<br><span style="font-size:.8rem;color:#7a6a90">同型，一起記</span></div>
+    <div><b>否定</b> → ～じゃなくて<br><span style="font-size:.8rem;color:#7a6a90">正式：ではなくて</span></div>
+  </div>
+</section>
+
+<section class="gq"><h2>練習問題 <span class="cnt" id="cq"></span></h2>
   <div id="quizBox"></div>
 </section>
 
@@ -471,6 +494,145 @@ sx:[
  {g:"特殊",v:"ある",vk:"aru",t:"あって",tk:"atte",zh:"有／在",tag:"否定是 ない，無「あらない」",
   ej:"時間があって、映画を見ました。",ek:"じかんがあって、えいがをみました",ez:"有時間所以看了電影。",
   eg:"<code>ある</code>用於非生物的存在，主語用 <code>が</code>（生物用<code>いる</code>）；此處的て形表原因。"}
+],
+sa:[
+ {g:"い形容詞：い → くて",v:"高い",vk:"たかい",t:"高くて",tk:"たかくて",zh:"貴／高",
+  ej:"この店は高くて、あまり行きません。",ek:"このみせはたかくて、あまりいきません",ez:"這家店很貴，所以不常去。",
+  eg:"い形容詞去 <code>い</code>＋<code>くて</code>。此處的て形表原因（因為貴所以不常去）；<code>あまり</code>必須與否定呼應。"},
+ {g:"い形容詞：い → くて",v:"安い",vk:"やすい",t:"安くて",tk:"やすくて",zh:"便宜",
+  ej:"この服は安くて、かわいいです。",ek:"このふくはやすくて、かわいいです",ez:"這件衣服又便宜又可愛。",
+  eg:"て形把兩個形容詞並列＝「又…又…」；只有最後一個形容詞才加 <code>です</code>（×<code>安いですて</code>）。"},
+ {g:"い形容詞：い → くて",v:"おいしい",vk:"oishii",t:"おいしくて",tk:"oishikute",zh:"好吃",
+  ej:"この料理はおいしくて、全部食べました。",ek:"このりょうりはおいしくて、ぜんぶたべました",ez:"這道菜很好吃，全部吃光了。",
+  eg:"て形表原因（因為好吃所以吃光）；<code>全部</code>是副詞，直接放動詞前不加助詞。"},
+ {g:"い形容詞：い → くて",v:"大きい",vk:"おおきい",t:"大きくて",tk:"おおきくて",zh:"大",
+  ej:"この部屋は大きくて、明るいです。",ek:"このへやはおおきくて、あかるいです",ez:"這個房間又大又亮。",
+  eg:"兩個い形容詞並列描述同一個主題（<code>部屋</code>），主題用 <code>は</code>提示。"},
+ {g:"い形容詞：い → くて",v:"小さい",vk:"ちいさい",t:"小さくて",tk:"ちいさくて",zh:"小",
+  ej:"字が小さくて、読めません。",ek:"じがちいさくて、よめません",ez:"字太小看不清楚。",
+  eg:"て形表原因，後面接否定可能形<code>読めません</code>；「太…」的語氣由前後文帶出，不必另加副詞。"},
+ {g:"い形容詞：い → くて",v:"新しい",vk:"あたらしい",t:"新しくて",tk:"あたらしくて",zh:"新",
+  ej:"この駅は新しくて、便利です。",ek:"このえきはあたらしくて、べんりです",ez:"這個車站又新又方便。",
+  eg:"前半是い形容詞的て形、後半是な形容詞<code>便利です</code>；不同種類的形容詞也能用て形串接。"},
+ {g:"い形容詞：い → くて",v:"忙しい",vk:"いそがしい",t:"忙しくて",tk:"いそがしくて",zh:"忙",
+  ej:"仕事が忙しくて、旅行に行けません。",ek:"しごとがいそがしくて、りょこうにいけません",ez:"工作太忙沒辦法去旅行。",
+  eg:"「因為…（狀態）所以做不到」是て形表原因最典型的用法；<code>行けません</code>是<code>行く</code>的否定可能形。"},
+ {g:"い形容詞：い → くて",v:"暑い",vk:"あつい",t:"暑くて",tk:"あつくて",zh:"熱",
+  ej:"今日は暑くて、何もしたくないです。",ek:"きょうはあつくて、なにもしたくないです",ez:"今天很熱，什麼都不想做。",
+  eg:"<code>動詞ます形＋たい</code>的否定是<code>たくない</code>；<code>何も</code>一定要與否定呼應。"},
+ {g:"い形容詞：い → くて",v:"寒い",vk:"さむい",t:"寒くて",tk:"さむくて",zh:"冷",
+  ej:"寒くて、コートを着ました。",ek:"さむくて、コートをきました",ez:"因為很冷所以穿了外套。",
+  eg:"て形表原因時，前半不變化時態，整句時態一律看句尾的<code>着ました</code>。"},
+ {g:"い形容詞：い → くて",v:"楽しい",vk:"たのしい",t:"楽しくて",tk:"たのしくて",zh:"開心",
+  ej:"パーティーは楽しくて、時間を忘れました。",ek:"パーティーはたのしくて、じかんをわすれました",ez:"派對很開心，忘了時間。",
+  eg:"注意過去式是<code>楽しかったです</code>，但用て形時不需過去化，直接用<code>楽しくて</code>。"},
+ {g:"い形容詞：い → くて",v:"面白い",vk:"おもしろい",t:"面白くて",tk:"おもしろくて",zh:"有趣",
+  ej:"この本は面白くて、一日で読みました。",ek:"このほんはおもしろくて、いちにちでよみました",ez:"這本書很有趣，一天就讀完了。",
+  eg:"<code>一日で</code>的 <code>で</code>表完成所花的時間範圍；て形帶「因為有趣所以…」的因果語感。"},
+ {g:"い形容詞：い → くて",v:"難しい",vk:"むずかしい",t:"難しくて",tk:"むずかしくて",zh:"難",
+  ej:"漢字は難しくて、よく間違えます。",ek:"かんじはむずかしくて、よくまちがえます",ez:"漢字很難，常常寫錯。",
+  eg:"<code>よく</code>在這裡是「經常」的意思（另有「好好地」之意，靠語境判斷）。"},
+ {g:"い形容詞：い → くて",v:"近い",vk:"ちかい",t:"近くて",tk:"ちかくて",zh:"近",
+  ej:"家は駅から近くて、毎日歩いて行きます。",ek:"いえはえきからちかくて、まいにちあるいていきます",ez:"家離車站很近，每天走路去。",
+  eg:"距離的起點用 <code>から</code>（<code>駅から近い</code>）；<code>歩いて行く</code>是動詞て形＋<code>行く</code>表移動方式。"},
+ {g:"い形容詞：い → くて",v:"広い",vk:"ひろい",t:"広くて",tk:"ひろくて",zh:"寬敞",
+  ej:"公園は広くて、気持ちがいいです。",ek:"こうえんはひろくて、きもちがいいです",ez:"公園很寬敞，很舒服。",
+  eg:"<code>気持ちがいい</code>＝舒服（固定搭配），主語用 <code>が</code>。"},
+ {g:"い形容詞 特例",v:"いい／よい",vk:"いい／よい",t:"よくて",tk:"よくて",zh:"好",tag:"不是「いくて」！",sv:"いい",
+  ej:"天気がよくて、散歩しました。",ek:"てんきがよくて、さんぽしました",ez:"天氣很好，去散步了。",
+  eg:"<code>いい</code>的所有變化都走<code>よい</code>系統，て形是<code>よくて</code>（×<code>いくて</code>）；過去式同理是<code>よかった</code>。"},
+ {g:"い形容詞 特例",v:"ない",vk:"nai",t:"なくて",tk:"nakute",zh:"沒有／不…",tag:"ない 本身就是い形容詞",
+  ej:"お金がなくて、買えませんでした。",ek:"おかねがなくて、かえませんでした",ez:"因為沒錢，所以買不起。",
+  eg:"<code>ない</code>是い形容詞，所以て形是<code>なくて</code>。動詞的否定<code>〜ない</code>要接て形時也一樣變<code>〜なくて</code>。"},
+ {g:"な形容詞：語幹 ＋ で",v:"静か",vk:"しずか",t:"静かで",tk:"しずかで",zh:"安靜",
+  ej:"この町は静かで、住みやすいです。",ek:"このまちはしずかで、すみやすいです",ez:"這個城鎮很安靜，很好住。",
+  eg:"な形容詞的て形＝語幹＋<code>で</code>（×<code>静かくて</code>）；<code>動詞ます形＋やすい</code>＝容易…。"},
+ {g:"な形容詞：語幹 ＋ で",v:"元気",vk:"げんき",t:"元気で",tk:"げんきで",zh:"健康／有精神",
+  ej:"母は元気で、毎日運動しています。",ek:"はははげんきで、まいにちうんどうしています",ez:"媽媽很健康，每天都運動。",
+  eg:"<code>ています</code>在這裡表反覆進行的習慣，不是「正在做」。"},
+ {g:"な形容詞：語幹 ＋ で",v:"便利",vk:"べんり",t:"便利で",tk:"べんりで",zh:"方便",
+  ej:"このアプリは便利で、よく使います。",ek:"このアプリはべんりで、よくつかいます",ez:"這個 App 很方便，常常用。",
+  eg:"て形表原因（因為方便所以常用）；な形容詞修飾名詞時才要加 <code>な</code>（<code>便利なアプリ</code>）。"},
+ {g:"な形容詞：語幹 ＋ で",v:"有名",vk:"ゆうめい",t:"有名で",tk:"ゆうめいで",zh:"有名",
+  ej:"あの店は有名で、いつも人が多いです。",ek:"あのみせはゆうめいで、いつもひとがおおいです",ez:"那家店很有名，總是很多人。",
+  eg:"<code>有名</code>結尾雖然像い形容詞，其實是な形容詞；<code>多い</code>的主語用 <code>が</code>。"},
+ {g:"な形容詞：語幹 ＋ で",v:"親切",vk:"しんせつ",t:"親切で",tk:"しんせつで",zh:"親切",
+  ej:"店員は親切で、丁寧に説明してくれました。",ek:"てんいんはしんせつで、ていねいにせつめいしてくれました",ez:"店員很親切，仔細地說明給我聽。",
+  eg:"<code>て形＋くれる</code>表對方為我做某事；<code>丁寧に</code>是な形容詞的副詞形（語幹＋<code>に</code>）。"},
+ {g:"な形容詞：語幹 ＋ で",v:"きれい",vk:"kirei",t:"きれいで",tk:"kireide",zh:"漂亮／乾淨",tag:"結尾是い，卻是な形容詞",
+  ej:"部屋はきれいで、広いです。",ek:"へやはきれいで、ひろいです",ez:"房間又乾淨又寬敞。",
+  eg:"<code>きれい</code>結尾是 <code>い</code>但屬な形容詞，所以是<code>きれいで</code>（×<code>きれくて</code>）；<code>嫌い・有名</code>是同類陷阱。"},
+ {g:"な形容詞：語幹 ＋ で",v:"上手",vk:"じょうず",t:"上手で",tk:"じょうずで",zh:"擅長",
+  ej:"彼は日本語が上手で、通訳もできます。",ek:"かれはにほんごがじょうずで、つうやくもできます",ez:"他日文很好，也能當口譯。",
+  eg:"<code>〜が上手</code>的對象用 <code>が</code>不是 <code>を</code>；<code>も</code>＝「也」，會取代 <code>が</code>。"},
+ {g:"な形容詞：語幹 ＋ で",v:"好き",vk:"すき",t:"好きで",tk:"すきで",zh:"喜歡",
+  ej:"日本の音楽が好きで、毎日聞いています。",ek:"にほんのおんがくがすきで、まいにちきいています",ez:"喜歡日本音樂，每天都聽。",
+  eg:"<code>好き</code>是な形容詞（不是動詞），喜歡的對象用 <code>が</code>；此處的て形表原因。"},
+ {g:"な形容詞：語幹 ＋ で",v:"嫌い",vk:"きらい",t:"嫌いで",tk:"きらいで",zh:"討厭",tag:"結尾是い，卻是な形容詞",
+  ej:"納豆が嫌いで、全然食べません。",ek:"なっとうがきらいで、ぜんぜんたべません",ez:"討厭納豆，完全不吃。",
+  eg:"<code>嫌い</code>屬な形容詞，て形是<code>嫌いで</code>（×<code>嫌くて</code>）；<code>全然</code>要與否定呼應。"},
+ {g:"な形容詞：語幹 ＋ で",v:"大変",vk:"たいへん",t:"大変で",tk:"たいへんで",zh:"辛苦",
+  ej:"仕事は大変で、休みが少ないです。",ek:"しごとはたいへんで、やすみがすくないです",ez:"工作很辛苦，假很少。",
+  eg:"<code>少ない</code>雖然結尾是<code>ない</code>，卻是普通的い形容詞（否定是<code>少なくない</code>），別誤判成否定形。"},
+ {g:"な形容詞：語幹 ＋ で",v:"簡単",vk:"かんたん",t:"簡単で",tk:"かんたんで",zh:"簡單",
+  ej:"この問題は簡単で、すぐできました。",ek:"このもんだいはかんたんで、すぐできました",ez:"這題很簡單，馬上就做完了。",
+  eg:"て形表原因；<code>できる</code>在此表「完成」，主語用 <code>が</code>（此句以 <code>は</code>提示主題後省略）。"},
+ {g:"否定形的て形",v:"高くない",vk:"たかくない",t:"高くなくて",tk:"たかくなくて",zh:"不貴",
+  ej:"この店は高くなくて、よく行きます。",ek:"このみせはたかくなくて、よくいきます",ez:"這家店不貴，所以常去。",
+  eg:"い形容詞的否定<code>〜くない</code>本身也是い形容詞，再變て形就是<code>〜くなくて</code>（去<code>い</code>＋<code>くて</code>）。"},
+ {g:"否定形的て形",v:"静かじゃない",vk:"しずかじゃない",t:"静かじゃなくて",tk:"しずかじゃなくて",zh:"不安靜",tag:"正式：静かではなくて",
+  ej:"部屋が静かじゃなくて、よく眠れません。",ek:"へやがしずかじゃなくて、よくねむれません",ez:"房間不安靜，睡不好。",
+  eg:"な形容詞的否定て形是<code>〜じゃなくて</code>（書面用<code>ではなくて</code>）；<code>眠れません</code>是<code>眠る</code>的否定可能形。"}
+],
+sn:[
+ {g:"名詞 ＋ で（並列・說明）",v:"学生",vk:"がくせい",t:"学生で",tk:"がくせいで",zh:"學生",
+  ej:"妹は学生で、まだ働いていません。",ek:"いもうとはがくせいで、まだはたらいていません",ez:"妹妹是學生，還沒工作。",
+  eg:"名詞的て形＝名詞＋<code>で</code>（來自<code>だ</code>的て形）。前半用<code>で</code>連接，句尾才決定時態與敬體。"},
+ {g:"名詞 ＋ で（並列・說明）",v:"日本人",vk:"にほんじん",t:"日本人で",tk:"にほんじんで",zh:"日本人",
+  ej:"彼は日本人で、大阪に住んでいます。",ek:"かれはにほんじんで、おおさかにすんでいます",ez:"他是日本人，住在大阪。",
+  eg:"居住地用 <code>に住む</code>；<code>住んでいます</code>是て形＋<code>いる</code>表持續的狀態。"},
+ {g:"名詞 ＋ で（並列・說明）",v:"先生",vk:"せんせい",t:"先生で",tk:"せんせいで",zh:"老師",
+  ej:"父は先生で、母は医者です。",ek:"ちちはせんせいで、はははいしゃです",ez:"爸爸是老師，媽媽是醫生。",
+  eg:"兩件事並列時，前半用<code>で</code>、只有句尾加<code>です</code>（×<code>先生ですで</code>）。"},
+ {g:"名詞 ＋ で（並列・說明）",v:"会社員",vk:"かいしゃいん",t:"会社員で",tk:"かいしゃいんで",zh:"上班族",
+  ej:"兄は会社員で、毎日忙しいです。",ek:"あにはかいしゃいんで、まいにちいそがしいです",ez:"哥哥是上班族，每天都很忙。",
+  eg:"名詞的て形後面可以接形容詞句；<code>毎日</code>是時間副詞，直接放句中不加助詞。"},
+ {g:"名詞 ＋ で（並列・說明）",v:"医者",vk:"いしゃ",t:"医者で",tk:"いしゃで",zh:"醫生",
+  ej:"あの人は医者で、とても親切です。",ek:"あのひとはいしゃで、とてもしんせつです",ez:"那個人是醫生，非常親切。",
+  eg:"名詞て形＋な形容詞的組合；<code>とても</code>是程度副詞，只修飾形容詞。"},
+ {g:"名詞 ＋ で（並列・說明）",v:"二十歳",vk:"はたち",t:"二十歳で",tk:"はたちで",zh:"二十歲",tag:"讀 はたち，特殊讀法",
+  ej:"娘は二十歳で、大学生です。",ek:"むすめははたちで、だいがくせいです",ez:"女兒二十歲，是大學生。",
+  eg:"<code>二十歳</code>唸<code>はたち</code>是特殊讀法（不是<code>にじゅっさい</code>）。年齡也是名詞，同樣用<code>で</code>並列。"},
+ {g:"名詞 ＋ で（並列・說明）",v:"台湾人",vk:"たいわんじん",t:"台湾人で",tk:"たいわんじんで",zh:"台灣人",
+  ej:"私は台湾人で、日本語を勉強しています。",ek:"わたしはたいわんじんで、にほんごをべんきょうしています",ez:"我是台灣人，正在學日文。",
+  eg:"自我介紹的基本句型：<code>名詞で</code>先說身分，再接後續說明。"},
+ {g:"名詞 ＋ で（並列・說明）",v:"休み",vk:"やすみ",t:"休みで",tk:"やすみで",zh:"休假",
+  ej:"明日は休みで、どこにも行きません。",ek:"あしたはやすみで、どこにもいきません",ez:"明天放假，哪裡都不去。",
+  eg:"<code>どこにも</code>＋否定＝「哪裡都不…」；<code>明日</code>這類相對時間不加 <code>に</code>。"},
+ {g:"名詞 ＋ で（原因・理由）",v:"雨",vk:"あめ",t:"雨で",tk:"あめで",zh:"雨",tag:"表原因的で",
+  ej:"雨で、試合が中止になりました。",ek:"あめで、しあいがちゅうしになりました",ez:"因為下雨，比賽取消了。",
+  eg:"這裡的 <code>で</code>是表原因的格助詞，形式與名詞て形相同，語感相通。<code>〜になる</code>表變化的結果。"},
+ {g:"名詞 ＋ で（原因・理由）",v:"病気",vk:"びょうき",t:"病気で",tk:"びょうきで",zh:"生病",
+  ej:"病気で、学校を休みました。",ek:"びょうきで、がっこうをやすみました",ez:"因為生病，沒去學校。",
+  eg:"<code>学校を休む</code>＝請假不去學校，對象用 <code>を</code>；原因用<code>名詞＋で</code>最簡潔。"},
+ {g:"名詞 ＋ で（原因・理由）",v:"風邪",vk:"かぜ",t:"風邪で",tk:"かぜで",zh:"感冒",
+  ej:"風邪で、声が出ません。",ek:"かぜで、こえがでません",ez:"因為感冒，發不出聲音。",
+  eg:"<code>声が出る</code>是自動詞句，主語用 <code>が</code>；<code>風邪</code>與<code>風（かぜ）</code>同音，靠漢字分辨。"},
+ {g:"名詞 ＋ で（原因・理由）",v:"事故",vk:"じこ",t:"事故で",tk:"じこで",zh:"事故",
+  ej:"事故で、電車が止まりました。",ek:"じこで、でんしゃがとまりました",ez:"因為事故，電車停了。",
+  eg:"<code>止まる</code>是自動詞（用 <code>が</code>）、<code>止める</code>是他動詞（用 <code>を</code>），成對記。"},
+ {g:"名詞 ＋ で（原因・理由）",v:"仕事",vk:"しごと",t:"仕事で",tk:"しごとで",zh:"工作",
+  ej:"仕事で、パーティーに行けませんでした。",ek:"しごとで、パーティーにいけませんでした",ez:"因為工作，沒能去派對。",
+  eg:"<code>仕事で</code>也可表「因公（出差等）」；<code>行けませんでした</code>是否定可能形的過去式。"},
+ {g:"名詞 ＋ で（原因・理由）",v:"地震",vk:"じしん",t:"地震で",tk:"じしんで",zh:"地震",
+  ej:"地震で、新幹線が遅れました。",ek:"じしんで、しんかんせんがおくれました",ez:"因為地震，新幹線誤點了。",
+  eg:"<code>遅れる</code>是自動詞（誤點），主語用 <code>が</code>；與形容詞<code>遅い</code>（慢）不同詞性。"},
+ {g:"否定：じゃなくて／ではなくて",v:"学生じゃない",vk:"がくせいじゃない",t:"学生じゃなくて",tk:"がくせいじゃなくて",zh:"不是學生",
+  ej:"彼は学生じゃなくて、社会人です。",ek:"かれはがくせいじゃなくて、しゃかいじんです",ez:"他不是學生，是社會人士。",
+  eg:"名詞的否定て形是<code>〜じゃなくて</code>，最常用來訂正＝「不是A，而是B」。"},
+ {g:"否定：じゃなくて／ではなくて",v:"日本人ではない",vk:"にほんじんではない",t:"日本人ではなくて",tk:"にほんじんではなくて",zh:"不是日本人",tag:"ではなくて 較正式",
+  ej:"あの人は日本人ではなくて、韓国人です。",ek:"あのひとはにほんじんではなくて、かんこくじんです",ez:"那個人不是日本人，是韓國人。",
+  eg:"<code>ではなくて</code>比<code>じゃなくて</code>正式，書面與正式場合常用，意思完全相同。"}
 ]};
 
 const QUIZ=[
@@ -493,7 +655,17 @@ const QUIZ=[
  {q:"死ぬ（しぬ）",a:"死んで（しんで）／死　※唯一的ぬ動詞",s:"しんで"},
  {q:"磨く（みがく）",a:"磨いて（みがいて）／刷",s:"みがいて"},
  {q:"切る（きる）",a:"切って（きって）／切　※一類",s:"きって"},
- {q:"着る（きる）",a:"着て（きて）／穿　※二類",s:"きて"}
+ {q:"着る（きる）",a:"着て（きて）／穿　※二類",s:"きて"},
+ {q:"高い（たかい）",a:"高くて（たかくて）／貴　※い形容詞",s:"たかくて"},
+ {q:"忙しい（いそがしい）",a:"忙しくて（いそがしくて）／忙　※い形容詞",s:"いそがしくて"},
+ {q:"いい／よい",a:"よくて／好　※特例，不是「いくて」",s:"よくて"},
+ {q:"ない",a:"なくて／沒有　※ない 是い形容詞",s:"なくて"},
+ {q:"静か（しずか）",a:"静かで（しずかで）／安靜　※な形容詞",s:"しずかで"},
+ {q:"きれい",a:"きれいで／漂亮・乾淨　※な形容詞，不是「きれくて」",s:"きれいで"},
+ {q:"上手（じょうず）",a:"上手で（じょうずで）／擅長　※な形容詞",s:"じょうずで"},
+ {q:"高くない（たかくない）",a:"高くなくて（たかくなくて）／不貴",s:"たかくなくて"},
+ {q:"学生（がくせい）",a:"学生で（がくせいで）／學生　※名詞＋で",s:"がくせいで"},
+ {q:"学生じゃない",a:"学生じゃなくて／不是學生　※正式：ではなくて",s:"がくせいじゃなくて"}
 ];
 
 /* ============ 發音 ============ */
@@ -539,14 +711,15 @@ function stopAll(){playing=false;queue=[];resetCardBtn();speechSynthesis.cancel(
 
 /* ============ 渲染 ============ */
 function esc(s){return s.replace(/'/g,"\\'")}
-function card(d){
-  return '<div class="card" data-v="'+d.v+'" data-t="'+d.t+'" data-ej="'+d.ej+'" '
+function card(d,label){
+  const sv=d.sv||d.v;
+  return '<div class="card" data-v="'+sv+'" data-t="'+d.t+'" data-ej="'+d.ej+'" '
    +'data-s="'+(d.v+d.vk+d.t+d.tk+d.zh+d.ej+d.ek+d.ez).toLowerCase()+'">'
    +'<div class="row1">'
    +'<span class="verb">'+d.v+'<span class="kana">'+d.vk+'</span></span>'
    +'<span class="to">→</span>'
    +'<span class="te">'+d.t+'<span class="kana">'+d.tk+'</span></span>'
-   +'<button class="sp" onclick="spk(\''+esc(d.v)+'、'+esc(d.t)+'\',event)">🔊 動詞</button>'
+   +'<button class="sp" onclick="spk(\''+esc(sv)+'、'+esc(d.t)+'\',event)">🔊 '+(label||'動詞')+'</button>'
    +'<span class="zh">'+d.zh+(d.tag?'<span class="tag">'+d.tag+'</span>':'')+'</span>'
    +'</div><div class="ex">'
    +'<div class="exjp">'+d.ej+'</div><div class="kana">'+d.ek+'</div>'
@@ -556,11 +729,13 @@ function card(d){
    +'<button class="spall" style="margin-top:6px" onclick="playCard(event)" title="連續播放：動詞→て形→例句">▶ 全部</button>'
    +'</div></div>';
 }
-['s3','s2','s1','sx'].forEach(k=>{
+const KEYS=['s3','s2','s1','sx','sa','sn'];
+const LABEL={s3:'動詞',s2:'動詞',s1:'動詞',sx:'動詞',sa:'形容詞',sn:'名詞'};
+KEYS.forEach(k=>{
   const sec=document.getElementById(k);let html='',last='';
   DATA[k].forEach(d=>{
     if(d.g!==last){html+='<div class="grp">'+d.g+'</div>';last=d.g;}
-    html+=card(d);
+    html+=card(d,LABEL[k]);
   });
   sec.insertAdjacentHTML('beforeend',html);
 });
@@ -568,6 +743,17 @@ document.getElementById('sx').insertAdjacentHTML('beforeend',
  '<div class="warn"><b>判斷順序：</b>① する／来る → 三類　② 上表例外清單 → 一類　'
  +'③ 「い段/え段 ＋ る」→ 二類　④ 其餘全部 → 一類。<br>'
  +'<b>同音陷阱：</b>き<b>る</b>＝着る(二類,穿)／切る(一類,切)；い<b>る</b>＝居る(二類,在)／要る(一類,需要)。</div>');
+
+document.getElementById('sa').insertAdjacentHTML('beforeend',
+ '<div class="warn"><b>常見錯誤：</b>×高い<b>で</b>（→高くて）　×静か<b>くて</b>（→静かで）　×<b>い</b>くて（→よくて）　×きれ<b>くて</b>（→きれいで）。<br>'
+ +'<b>い／な 判斷陷阱：</b>きれい・嫌い・有名・元気・親切・簡単 全是<b>な形容詞</b>，て形一律用 <b>で</b>；'
+ +'反之 <b>少ない・危ない</b> 結尾雖有「ない」，卻是普通い形容詞（→少なくて）。</div>');
+
+document.getElementById('sn').insertAdjacentHTML('beforeend',
+ '<div class="warn"><b>別和其他「で」搞混：</b>名詞＋<b>で</b>還有 <b>手段</b>（バス<b>で</b>行く＝搭公車去）、'
+ +'<b>場所</b>（教室<b>で</b>食べる＝在教室吃）的用法。<br>'
+ +'<b>判斷方法：</b>後面接<b>身分・狀態・性質</b>的敘述 → 是「＝是…」的て形；後面接<b>動作動詞</b> → 多為手段或場所。<br>'
+ +'<b>一句總結：</b>な形容詞與名詞的て形<b>完全同型</b>，都是 <b>～で</b>；只有い形容詞用 <b>～くて</b>。</div>');
 
 document.getElementById('quizBox').innerHTML=QUIZ.map((q,i)=>
  '<div class="quiz"><div class="qq">'+(i+1)+'. '+q.q+' → ？</div>'
@@ -579,16 +765,16 @@ function toggleAns(){const a=document.querySelectorAll('.ans');
   a.forEach(x=>x.classList.toggle('show',!all))}
 
 /* 計數 */
-const N={s3:DATA.s3.length,s2:DATA.s2.length,s1:DATA.s1.length,sx:DATA.sx.length};
-document.getElementById('c3').textContent=N.s3+' 個';
-document.getElementById('c2').textContent=N.s2+' 個';
-document.getElementById('c1').textContent=N.s1+' 個';
-document.getElementById('cx').textContent=N.sx+' 個';
-const total=N.s3+N.s2+N.s1+N.sx;
-document.getElementById('stat').textContent='共 '+total+' 個動詞 ・ '+total+' 句例句 ・ '+QUIZ.length+' 題練習';
+const N={};KEYS.forEach(k=>N[k]=DATA[k].length);
+const CID={s3:'c3',s2:'c2',s1:'c1',sx:'cx',sa:'ca',sn:'cn'};
+KEYS.forEach(k=>document.getElementById(CID[k]).textContent=N[k]+' 個');
+document.getElementById('cq').textContent=QUIZ.length+' 題';
+const nVerb=N.s3+N.s2+N.s1+N.sx, total=nVerb+N.sa+N.sn;
+document.getElementById('stat').textContent=
+ '動詞 '+nVerb+' ・ 形容詞 '+N.sa+' ・ 名詞 '+N.sn+'　共 '+total+' 條 ・ '+total+' 句例句 ・ '+QUIZ.length+' 題練習';
 
 /* 篩選 ＋ 搜尋 */
-const GROUPS=[['all','全部'],['s3','三類'],['s2','二類'],['s1','一類'],['sx','特例']];
+const GROUPS=[['all','全部'],['s3','三類'],['s2','二類'],['s1','一類'],['sx','特例'],['sa','形容詞'],['sn','名詞']];
 let cur='all';
 document.getElementById('filters').innerHTML=GROUPS.map(g=>
  '<button class="f'+(g[0]==='all'?' on':'')+'" data-k="'+g[0]+'">'+g[1]+'</button>').join('');
@@ -600,7 +786,7 @@ document.querySelectorAll('.f').forEach(b=>b.onclick=()=>{
 document.getElementById('q').oninput=apply;
 function apply(){
   const kw=document.getElementById('q').value.trim().toLowerCase();
-  ['s3','s2','s1','sx'].forEach(k=>{
+  KEYS.forEach(k=>{
     const sec=document.getElementById(k);
     const secOn=(cur==='all'||cur===k);
     let shown=0;
